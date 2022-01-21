@@ -2,7 +2,15 @@ require 'rails_helper'
 
 describe "get all pet listings route", :type => :request do
   let!(:pets) { FactoryBot.create_list(:pet, 14)}
-
+  
+  # This before block could certainly be improved, but I'm stumped.
+  before do
+    if Pet.where(name: "Hel Goddess Of Death")
+      hel = Pet.where(name: "Hel Goddess Of Death")
+      hel.destroy(hel.ids)
+    end
+  end
+  
   it 'returns all 14 pets' do
     get '/pets'
     expect(JSON.parse(response.body).size).to eq(14)
