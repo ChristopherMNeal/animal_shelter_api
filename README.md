@@ -24,7 +24,7 @@
 ## Description
 
 _This project was created for Epicodus bootcamp to show proficiency in Rails APIs. The application is an API for users to retrieve listings of pets in an animal shelter._
-_All users can access animal shelter pet listings and post, update, delete listings._
+_All users can access animal shelter pet listings and post, update, delete listings. CORS is enabled for all origins but restricted to GET method only. There are endpoints to search by pet name, filter by species, and retrieve a random pet._
 
 ## System Requirements
 
@@ -41,32 +41,49 @@ _(Note: Ruby gem dependencies will be installed automatically by Bundler.)_
       `rake db:setup`
 * Enter `rspec` into the terminal to confirm passing of all tests.
 * Run `rails s` to start the Rails server.
+* Open Postman to try out the following endpoints.
 
 ## Endpoints
+*example URLs use `species=Cat` `name=Brad` and `page=1` as parameters*
 
 |Usage | METHOD       | URL       | Params |
 | :--------|:------------| :---------| :------|
-|See Pet Listings | GET    | `localhost:3000/pets` | |
-|See Pet Listings (Option to Paginate Listings) | GET    | `localhost:3000/pets?page=1` | *page* |
-|See A Specific Animal Listing | GET    | `localhost:3000/pets/:id` | |
-|Search By Animal Name | GET    | `localhost:3000/pets?name=&page=1` | *name, page* |
-|Search By Animal Species | GET    | `localhost:3000/pets?species=&page=1` | *species, page* |
+|See All Pet Listings | GET    | `localhost:3000/pets` | |
+|See Pet Paginated Listings | GET    | `localhost:3000/pets?page=1` | *page* |
+|See A Specific Pet Listing | GET    | `localhost:3000/pets/:id` | |
+|Search By Pet Name | GET    | `localhost:3000/pets?name=Brad&page=1` | *name, page* |
+|Search By Pet Species | GET    | `localhost:3000/pets?species=Cat&page=1` | *species, page* |
 |See A Random Pet | GET    | `localhost:3000/pets/random` | |
 |Create a Pet Listing | POST    | `localhost:3000/pets` | *name, content* |
 |Update a Pet Listing | PUT    | `localhost:3000/pets/:id` | *name, content* |
-|Delete a Pet Listing | DELETE    |`localhost:3000/pets/:id`| |  
+|Delete a Pet Listing | DELETE    |`localhost:3000/pets/:id`| | 
+
+Species filter is limited to `Cat` `Dog` & `Bunny` and is case sensitive.
+Name search is case insensitive and will match similar names.
 
 ## Responses
 
 When getting a single pet listing, expect the response to look like:
 
 ```
-{
-  "id" : integer,
-  "name" : string,
-  "species" : string
-}
+[
+    {
+        "id": integer,
+        "name": string,
+        "species": string,
+        "created_at": timestamp,
+        "updated_at": timestamp,
+        "breed": string
+    }
+]
 ```
+
+|Column | Must Be Present?       |  Validations      | 
+| :--------|:------------| :---------| 
+|name | true    | 25 Characters Maximum |
+|species | true    | Can only be 'Cat' 'Dog' or 'Bunny' |
+|breed | true    | 35 Characters Maximum |
+
 ## Database Schema
 
 ![image_of_database_schema](./public/animal_shelter_api_db_schema.png)
