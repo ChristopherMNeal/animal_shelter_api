@@ -17,12 +17,20 @@ class PetsController < ApplicationController
 
   def update
     @pet = Pet.find(params[:id])
-    @pet.update(pet_params)
+    if @pet.update!(pet_params)
+      render status: 200, json: {
+      message: "This listing has been updated successfully."
+      }
+    end
   end
 
   def destroy
     @pet = Pet.find(params[:id])
-    @pet.destroy
+    if @pet.destroy!
+      render status: 200, json: {
+      message: "This listing has been deleted successfully."
+      }
+    end
   end
 
   private
