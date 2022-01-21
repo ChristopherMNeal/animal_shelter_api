@@ -4,4 +4,5 @@ class Pet < ApplicationRecord
   validates :species, presence: true
   validates :species, inclusion: { in: %w(Cat Dog Bunny),
     message: "%{value} is not a valid species" }
+  scope :search_name, -> (name_parameter) { where(name: name_parameter) }
 end
