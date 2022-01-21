@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe "post a pet route", :type => :request do
-  # let!(:pets) { FactoryBot.create_list(:pet, 20)}
 
   before do
     post '/pets', params: { :name => 'Gina', :breed => 'German Shepard Mix', :species => 'Dog' }
