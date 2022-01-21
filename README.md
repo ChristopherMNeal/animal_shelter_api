@@ -67,6 +67,9 @@ When getting a single pet listing, expect the response to look like:
   "species" : string
 }
 ```
+## Database Schema
+
+![image_of_database_schema](./public/animal_shelter_api_db_schema.png)
 
 ## Known Bugs
 
