@@ -6,8 +6,11 @@ class PetsController < ApplicationController
 
   def index
     name = params[:name]
+    species = params[:species]
     if name
       @pets = Pet.search_name(name).paginate(page: params[:page], per_page: 10)
+    elsif species
+      @pets = Pet.species_filter(species).paginate(page: params[:page], per_page: 10)
     elsif !params[:page]
       @pets = Pet.all
     else
