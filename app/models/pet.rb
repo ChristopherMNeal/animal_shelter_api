@@ -2,6 +2,8 @@ class Pet < ApplicationRecord
   validates :name, presence: true
   validates :breed, presence: true
   validates :species, presence: true
+  validates_length_of :name, maximum: 25
+  validates_length_of :breed, maximum: 50
   validates :species, inclusion: { in: %w(Cat cat Dog dog Bunny bunny),
     message: "%{value} is not a valid species" }
   scope :search_name, -> (name_parameter) { where("name ilike ?","%#{name_parameter}%") }
