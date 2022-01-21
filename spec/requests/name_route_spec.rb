@@ -3,12 +3,8 @@ require 'rails_helper'
 describe "search for an name route", :type => :request do
   let!(:pets) { FactoryBot.create_list(:pet, 10)}
   before { get "/pets?name=#{Pet.first.name}"}
-
-  it 'returns one pet' do
-    expect(JSON.parse(response.body).size).to eq(1)
-  end
   
-  it 'returns the pet with name' do
+  it 'returns the pet with correct name' do
     expect(JSON.parse(response.body).first['name']).to eq(Pet.first.name)
   end
 
@@ -17,7 +13,7 @@ describe "search for an name route", :type => :request do
   end
 
   # These work but I need a way to delete 'Hel' from the database afterwards.
-  
+
   # FactoryBot.create(:pet, :name => "Hel Goddess Of Death")
   # before { get "/pets?name=Hel Goddess Of Death"}
 
