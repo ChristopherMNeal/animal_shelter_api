@@ -1,7 +1,12 @@
 class PetsController < ApplicationController
 
   def index
-    @pets = Pet.all
+    # @pets = Pet.all
+    if !params[:page]
+      @pets = Pet.all
+    else
+      @pets = Pet.paginate(page: params[:page], per_page: 10)
+    end
     json_response(@pets)
   end
 
