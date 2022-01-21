@@ -46,14 +46,15 @@ _(Note: Ruby gem dependencies will be installed automatically by Bundler.)_
 
 |Usage | METHOD       | URL       | Params |
 | :--------|:------------| :---------| :------|
-|See Pet Listings | GET    | `localhost:3000/animals` | |
-|See Pet Listings (Option to Paginate Listings) | GET    | `localhost:3000/animals?page=1` | _page_ |
-|See A Specific Animal Listing | GET    | `localhost:3000/animals/:id` | |
-|Search By Animal Name | GET    | `localhost:3000/animals?pet_name=&page=1` | *pet_name, page* |
-|See A Random Pet | GET    | `localhost:3000/animals/random` | |
-|Create a Pet Listing | POST    | `localhost:3000/animals` | *pet_name, content* |
-|Update a Pet Listing | PUT    | `localhost:3000/animals/:id` | *pet_name, content* |
-|Delete a Pet Listing | DELETE    |`localhost:3000/animals/:id`| |  
+|See Pet Listings | GET    | `localhost:3000/pets` | |
+|See Pet Listings (Option to Paginate Listings) | GET    | `localhost:3000/pets?page=1` | *page* |
+|See A Specific Animal Listing | GET    | `localhost:3000/pets/:id` | |
+|Search By Animal Name | GET    | `localhost:3000/pets?name=&page=1` | *name, page* |
+|Search By Animal Species | GET    | `localhost:3000/pets?species=&page=1` | *species, page* |
+|See A Random Pet | GET    | `localhost:3000/pets/random` | |
+|Create a Pet Listing | POST    | `localhost:3000/pets` | *name, content* |
+|Update a Pet Listing | PUT    | `localhost:3000/pets/:id` | *name, content* |
+|Delete a Pet Listing | DELETE    |`localhost:3000/pets/:id`| |  
 
 ## Responses
 
@@ -62,8 +63,8 @@ When getting a single pet listing, expect the response to look like:
 ```
 {
   "id" : integer,
-  "pet_name" : string,
-  "pet_name" : string
+  "name" : string,
+  "species" : string
 }
 ```
 
