@@ -1,4 +1,8 @@
 class PetsController < ApplicationController
+  def random
+    @pets = Pet.all.shuffle.sample
+    json_response(@pets)
+  end
 
   def index
     name = params[:name]
