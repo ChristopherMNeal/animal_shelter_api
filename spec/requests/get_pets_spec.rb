@@ -1,8 +1,18 @@
 require 'rails_helper'
 
 describe "get all pet listings route", :type => :request do
-  Pet.destroy_all
   let!(:pets) { FactoryBot.create_list(:pet, 14)}
+
+  #THIS CAN BE IMPROVED
+  before do
+    @pet_id = Pet.first.id
+    delete "/pets/#{@pet_id}"
+  end
+
+  it 'returns all 14 pets' do
+    get '/pets'
+    expect(JSON.parse(response.body).size).to eq(14)
+  end
 
   it 'returns the first 10 pets' do
     get '/pets?page=1'
