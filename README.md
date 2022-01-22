@@ -48,15 +48,15 @@ _(Note: Ruby gem dependencies will be installed automatically by Bundler.)_
 
 |Usage | METHOD       | URL       | Params |
 | :--------|:------------| :---------| :------|
-|See All Pet Listings | GET    | `localhost:3000/pets` | |
-|See Pet Paginated Listings | GET    | `localhost:3000/pets?page=1` | *page* |
-|See A Specific Pet Listing | GET    | `localhost:3000/pets/:id` | |
-|Search By Pet Name | GET    | `localhost:3000/pets?name=Brad&page=1` | *name, page* |
-|Search By Pet Species | GET    | `localhost:3000/pets?species=Cat&page=1` | *species, page* |
-|See A Random Pet | GET    | `localhost:3000/pets/random` | |
-|Create a Pet Listing | POST    | `localhost:3000/pets` | *name, content* |
-|Update a Pet Listing | PUT    | `localhost:3000/pets/:id` | *name, content* |
-|Delete a Pet Listing | DELETE    |`localhost:3000/pets/:id`| | 
+|See All Pet Listings | GET    | `localhost:3000/api/v1/pets` | |
+|See Pet Paginated Listings | GET    | `localhost:3000/api/v1/pets?page=1` | *page* |
+|See A Specific Pet Listing | GET    | `localhost:3000/api/v1/pets/:id` | |
+|Search By Pet Name | GET    | `localhost:3000/api/v1/pets?name=Brad&page=1` | *name, page* |
+|Search By Pet Species | GET    | `localhost:3000/api/v1/pets?species=Cat&page=1` | *species, page* |
+|See A Random Pet | GET    | `localhost:3000/api/v1/pets/random` | |
+|Create a Pet Listing | POST    | `localhost:3000/api/v1/pets` | *name, content* |
+|Update a Pet Listing | PUT    | `localhost:3000/api/v1/pets/:id` | *name, content* |
+|Delete a Pet Listing | DELETE    |`localhost:3000/api/v1/pets/:id`| | 
 
 Species filter is limited to `Cat` `Dog` & `Bunny` and is case sensitive.
 Name search is case insensitive and will match similar names.
@@ -82,7 +82,7 @@ When getting a single pet listing, expect the response to look like:
 | :--------|:------------| :---------| 
 |name | true    | 25 Characters Maximum |
 |species | true    | Can only be 'Cat' 'Dog' or 'Bunny' |
-|breed | true    | 35 Characters Maximum |
+|breed | true    | 50 Characters Maximum |
 
 ## Database Schema
 
