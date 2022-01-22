@@ -5,7 +5,7 @@ describe "delete a pet listing route", :type => :request do
 
   before do
     @pet_id = Pet.first.id
-    delete "/pets/#{@pet_id}"
+    delete "/api/v1/pets/#{@pet_id}"
   end
   it 'returns status code 200' do
     expect(response).to have_http_status(200)

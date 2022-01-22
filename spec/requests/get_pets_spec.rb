@@ -16,22 +16,22 @@ describe "get all pet listings route", :type => :request do
   end
   
   it 'returns all 14 pets' do
-    get '/pets'
+    get '/api/v1/pets'
     expect(JSON.parse(response.body).size).to eq(14)
   end
 
   it 'returns the first 10 pets' do
-    get '/pets?page=1'
+    get '/api/v1/pets?page=1'
     expect(JSON.parse(response.body).size).to eq(10)
   end
 
   it 'returns the last 4 pets' do
-    get '/pets?page=2'
+    get '/api/v1/pets?page=2'
     expect(JSON.parse(response.body).size).to eq(4)
   end
   
   it 'returns status code 200' do
-    get '/pets'
+    get '/api/v1/pets'
     expect(response).to have_http_status(:success)
   end
 end

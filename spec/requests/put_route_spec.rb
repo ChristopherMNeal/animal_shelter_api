@@ -4,7 +4,7 @@ describe "update a pet route", :type => :request do
   let!(:pets) { FactoryBot.create_list(:pet, 20)}
 
   before do
-    put "/pets/#{Pet.first.id}", params: { :breed => 'Tabby', :name => 'Lil Bub', :species => 'Cat' }
+    put "/api/v1/pets/#{Pet.first.id}", params: { :breed => 'Tabby', :name => 'Lil Bub', :species => 'Cat' }
   end
 
   it 'returns status code 200' do

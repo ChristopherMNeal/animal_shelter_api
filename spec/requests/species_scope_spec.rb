@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "filter by species route", :type => :request do
   let!(:pets) { FactoryBot.create_list(:pet, 10)}
   FactoryBot.create(:pet, :name => "Skuld Queen Of The Elves", :species => 'Bunny')
-  before { get "/pets?species=Bunny"}
+  before { get "/api/v1/pets?species=Bunny"}
 
   it 'returns one pet' do
     expect(JSON.parse(response.body).size).to eq(1)
