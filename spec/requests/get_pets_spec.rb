@@ -9,6 +9,10 @@ describe "get all pet listings route", :type => :request do
       hel = Pet.where(name: "Hel Goddess Of Death")
       hel.destroy(hel.ids)
     end
+    if Pet.where(name: "Skuld Queen Of The Elves")
+      hel = Pet.where(name: "Skuld Queen Of The Elves")
+      hel.destroy(hel.ids)
+    end
   end
   
   it 'returns all 14 pets' do

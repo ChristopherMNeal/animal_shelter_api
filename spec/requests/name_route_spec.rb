@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "search for an name route", :type => :request do
+describe "search for a name route", :type => :request do
   let!(:pets) { FactoryBot.create_list(:pet, 10)}
   before { get "/pets?name=#{Pet.first.name}"}
   
