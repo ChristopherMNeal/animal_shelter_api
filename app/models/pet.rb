@@ -7,7 +7,7 @@ class Pet < ApplicationRecord
   validates :species, inclusion: { in: %w(Cat cat Dog dog Bunny bunny),
     message: "%{value} is not a valid species" }
   scope :search_name, -> (name_parameter) { where("name ilike ?","%#{name_parameter}%") }
-  scope :species_filter, -> (species_parameter) { where(species: species_parameter) }
+  scope :species_filter, -> (species_parameter) { where("species ilike ?","%#{species_parameter}%") }
   before_save(:titleize_name)
   before_save(:titleize_breed)
   before_save(:titleize_species)
