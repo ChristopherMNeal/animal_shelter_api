@@ -48,17 +48,17 @@ _All users can access animal shelter pet listings and post, update, delete listi
 _Where `PARAM` is included in the URL examples, it will need to be replaced with the appropriate parameter._
 _Where `:id` is included in the URL examples, it will need to be replaced with a pet listing's id._
 
-| Usage                      | METHOD | URL                                                                   | Parameters                                                                             | Example                                           |
-| :------------------------- | :----- | :-------------------------------------------------------------------- | :------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| See All Pet Listings       | GET    | `localhost:3000/api/v1/pets`                                          |                                                                                        |                                                   |
-| See Pet Paginated Listings | GET    | `localhost:3000/api/v1/pets?page=PARAM`                               | page= _integer_                                                                        | page=2                                            |
-| See a Specific Pet Listing | GET    | `localhost:3000/api/v1/pets/:id`                                      |                                                                                        |                                                   |
-| Search By Pet Name         | GET    | `localhost:3000/api/v1/pets?name=PARAM&page=PARAM`                    | name= _string (required)_ <br>page= _integer_                                          | name=chloe&page=1                                 |
-| Search By Pet Species      | GET    | `localhost:3000/api/v1/pets?species=PARAM&page=PARAM`                 | species= _string_ <br>page= _integer_                                                  | species=cat&page=2                                |
-| See a Random Pet           | GET    | `localhost:3000/api/v1/pets/random`                                   |                                                                                        |                                                   |
-| Create a Pet Listing       | POST   | `localhost:3000/api/v1/pets?name=PARAM&species=PARAM&breed=PARAM`     | name= _string(required)_ <br>species= _string(required)_ <br>breed= _string(required)_ | species=cat&name=chloe&breed=norwegian forest cat |
-| Update a Pet Listing       | PUT    | `localhost:3000/api/v1/pets/:id?name=PARAM&species=PARAM&breed=PARAM` | name= _string(required)_ <br>species= _string(required)_ <br>breed= _string(required)_ | pets/1?name=chloe&species=cat&breed=bengal        |
-| Delete a Pet Listing       | DELETE | `localhost:3000/api/v1/pets/:id`                                      |                                                                                        |                                                   |
+| Usage                      | METHOD | URL                                                                   | Parameters                                               |
+| :------------------------- | :----- | :-------------------------------------------------------------------- | :------------------------------------------------------- |
+| See All Pet Listings       | GET    | `localhost:3000/api/v1/pets`                                          |                                                          |
+| See Pet Paginated Listings | GET    | `localhost:3000/api/v1/pets?page=PARAM`                               | page: _integer_                                          |
+| See a Specific Pet Listing | GET    | `localhost:3000/api/v1/pets/:id`                                      |                                                          |
+| Search By Pet Name         | GET    | `localhost:3000/api/v1/pets?name=PARAM&page=PARAM`                    | name: _string_ <br>page: _integer_                       |
+| Search By Pet Species      | GET    | `localhost:3000/api/v1/pets?species=PARAM&page=PARAM`                 | species: _string_ <br>page: _integer_                    |
+| See a Random Pet           | GET    | `localhost:3000/api/v1/pets/random`                                   |                                                          |
+| Create a Pet Listing       | POST   | `localhost:3000/api/v1/pets?name=PARAM&species=PARAM&breed=PARAM`     | name: _string_ <br>species: _string_ <br>breed: _string_ |
+| Update a Pet Listing       | PUT    | `localhost:3000/api/v1/pets/:id?name=PARAM&species=PARAM&breed=PARAM` | name: _string_ <br>species: _string_ <br>breed: _string_ |
+| Delete a Pet Listing       | DELETE | `localhost:3000/api/v1/pets/:id`                                      |                                                          |
 
 Species filter is limited to `cat`, `dog`, & `bunny` and is case insensitive.
 Name search is case insensitive and will match similar names.
