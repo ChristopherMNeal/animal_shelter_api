@@ -17,7 +17,13 @@ module Api::V1
       else
         @pets = Pet.paginate(page: params[:page], per_page: 10)
       end
-      json_response(@pets)
+      if @pets != []
+        json_response(@pets)
+      else
+        render status: 404, json: {
+        message: "There were no listing that matched your parameters."
+        }
+      end
     end
 
     def show
