@@ -20,6 +20,7 @@
 - _Faker_
 - _Will Paginate_
 - _Factory Bot_
+- _Postman_
 
 ## Description
 
@@ -30,22 +31,22 @@ _All users can access animal shelter pet listings and post, update, delete listi
 
 - Ruby v2.6.5 recommended
 - Postgres 12.9
-- Postman
+- [Postman](https://www.postman.com/)  
   _(Note: Ruby gem dependencies will be installed automatically by Bundler.)_
 
 ## Setup/Installation Requirements
 
-- Clone the GitHub repository: [https://github.com/ChristopherMNeal/animal_shelter_api](https://github.com/ChristopherMNeal/animal_shelter_api)
+- Clone the GitHub repository: **[https://github.com/ChristopherMNeal/animal_shelter_api](https://github.com/ChristopherMNeal/animal_shelter_api)**
 - From the main project directory, enter `bundle install` in the terminal to populate gems.
-- To create a database, type in your terminal:
-  `rake db:setup`
+- To create a database, enter `rake db:setup` into your terminal. The console should print 20 cats and 20 dogs that were created.
 - Enter `rspec` into the terminal to confirm passing of all tests.
 - Run `rails s` to start the Rails server.
 - Open Postman to try out the following endpoints.
 
 ## Endpoints
 
-_Where `PARAM` is included in the URL examples, it will need to be replaced with the appropriate parameter._
+_Where `PARAM` is included in the URL examples, it will need to be replaced with the appropriate parameter._  
+_All parameters are required and case insensitive. Further validations listed [below](#parameter-validations)._  
 _Where `:id` is included in the URL examples, it will need to be replaced with a pet listing's id._
 
 | Usage                      | METHOD | URL                                                                   | Parameters                                               |
@@ -63,7 +64,9 @@ _Where `:id` is included in the URL examples, it will need to be replaced with a
 Species filter is limited to `cat`, `dog`, & `bunny` and is case insensitive.
 Name search is case insensitive and will match similar names.
 
-### Parameter Validations for Creating or Updating a Pet Listing
+### Parameter Validations
+
+_...for Creating or Updating a Pet Listing_
 
 | Parameter | Must Be Present? | Validations                        |
 | :-------- | :--------------- | :--------------------------------- |
@@ -82,7 +85,7 @@ URL
 URL with pagination
 `localhost:3000/api/v1/pets?page=1`
 
-### Get a Specific Pet Endpoint:
+### GET a Specific Pet Endpoint:
 
 When getting a single pet listing with the listing id or Random endpoint, for instance `http://localhost:3000/api/v1/pets/1` with `GET` method, expect the response to look like:
 
@@ -97,7 +100,7 @@ When getting a single pet listing with the listing id or Random endpoint, for in
 }
 ```
 
-### Update a Pet Listing
+### PUT to Update a Pet Listing
 
 When updating a pet listing, for instance `http://localhost:3000/api/v1/pets/1?name=chloe&species=cat&breed=bengal` with `PUT` method, expect the response to look like this:
 
@@ -107,7 +110,7 @@ When updating a pet listing, for instance `http://localhost:3000/api/v1/pets/1?n
 }
 ```
 
-### Delete a Pet Listing
+### DELETE a Pet Listing
 
 When deleting a pet listing, for instance `http://localhost:3000/api/v1/pets/1` with `DELETE` method, expect the response to look like this:
 
@@ -116,6 +119,16 @@ When deleting a pet listing, for instance `http://localhost:3000/api/v1/pets/1` 
     "message": "This listing has been deleted successfully."
 }
 ```
+
+## Status Codes
+
+| Status Code | Description             |
+| :---------- | :---------------------- |
+| 200         | `OK`                    |
+| 201         | `CREATED`               |
+| 400         | `BAD REQUEST`           |
+| 404         | `NOT FOUND`             |
+| 500         | `INTERNAL SERVER ERROR` |
 
 ## Database Schema
 
