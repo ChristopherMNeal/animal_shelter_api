@@ -33,14 +33,18 @@ module Api::V1
 
     def create
       @pet = Pet.create!(pet_params)
-      json_response(@pet)
+      if @pet.update!(pet_params)
+        render status: 201, json: {
+        message: "A listing for '#{@pet.name}' has been created successfully. ID = #{@pet.id}"
+        }
+      end
     end
 
     def update
       @pet = Pet.find(params[:id])
       if @pet.update!(pet_params)
         render status: 200, json: {
-        message: "This listing has been updated successfully."
+        message: "This listing for '#{@pet.name}' (id: #{@pet.id}) has been updated successfully."
         }
       end
     end
@@ -49,7 +53,7 @@ module Api::V1
       @pet = Pet.find(params[:id])
       if @pet.destroy!
         render status: 200, json: {
-        message: "This listing has been deleted successfully."
+        message: "This listing for '#{@pet.name}' (id: #{@pet.id}) has been deleted successfully."
         }
       end
     end
